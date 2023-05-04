@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "upload-path",
+    "type": "java.lang.String",
+    "description": "A description for 'upload-path'"
+  },
+  {
+    "name": "upload-path",
+    "type": "java.lang.String",
+    "description": "A description for 'upload-path'"
+  },
+  {
+    "name": "logging.data.web.pageable.default-page-size",
+    "type": "java.lang.String",
+    "description": "A description for 'logging.data.web.pageable.default-page-size'"
+  },
+  {
+    "name": "logging.data.web.pageable.max-page-size",
+    "type": "java.lang.String",
+    "description": "A description for 'logging.data.web.pageable.max-page-size'"
+  },
+  {
+    "name": "hoaxify.upload-path",
+    "type": "java.lang.String",
+    "description": "A description for 'hoaxify.upload-path'"
+  }
+]}
