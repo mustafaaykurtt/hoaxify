@@ -5,7 +5,6 @@ import java.util.Date;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.hoaxify.ws.user.User;
 import com.hoaxify.ws.user.UserService;
 
@@ -36,6 +35,19 @@ public class HoaxService {
 	public Page<Hoax> getHoaxesOfUser(String username, Pageable page) {
 		User inDB = userService.getByUsername(username);
 		return hoaxRepository.findByUser(inDB, page);
+	}
+
+	public Page<Hoax> getOldHoaxes(long id, Pageable page) {
+		return hoaxRepository.findByIdLessThan(id, page);
+	}
+
+	public Page<Hoax> getOldHoaxesOfUser(long id, String username, Pageable page) {
+		User inDB = userService.getByUsername(username);
+		return hoaxRepository.findByIdLessThanAndUser(id, inDB, page);
+	}
+
+	public long getNextHoaxesCount(long id) {
+		return hoaxRepository.countByIdGreaterThan(id);
 	}
 	
 }
