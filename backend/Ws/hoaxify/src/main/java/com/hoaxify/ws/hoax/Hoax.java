@@ -2,11 +2,14 @@ package com.hoaxify.ws.hoax;
 
 import java.util.Date;
 
+import com.hoaxify.ws.user.User;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Size;
@@ -26,5 +29,8 @@ public class Hoax {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timeStamp;
+	
+	@ManyToOne
+	private User user;
 	
 }

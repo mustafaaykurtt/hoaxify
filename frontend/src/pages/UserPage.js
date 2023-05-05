@@ -5,13 +5,15 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useApiProgress } from '../shared/ApiProgress';
 import { Spinner } from 'react-bootstrap';
+import HoaxFeed from '../components/HoaxFeed';
+
 
 const UserPage = () => {
   const [user, setUser] = useState({});
   const [notFound, setNotFound] = useState(false);
   const { username } = useParams();
   const { t } = useTranslation();
-  const pendingApiCall = useApiProgress('get', '/api/1.0/users/' + username);
+  const pendingApiCall = useApiProgress('get', '/api/1.0/users/' + username, true);
 
 
   useEffect(() => {
@@ -30,13 +32,6 @@ const UserPage = () => {
     loadUser();
   }, [username])
 
-  if(pendingApiCall) {
-    return (
-    <div className='d-flex justify-content-center'>
-      <Spinner/>
-    </div>
-  )}
-
 
   if (notFound) {
     return (
@@ -51,9 +46,23 @@ const UserPage = () => {
     )
   }
 
+  if(pendingApiCall || user.username !== username) {
+    return (
+    <div className='d-flex justify-content-center'>
+      <Spinner/>
+    </div>
+  )}
+
   return (
     <div className="container">
+      <div className='row'>
+        <div className='col'>
       <ProfileCard user={user} />
+        </div>
+        <div className='col'>
+          <HoaxFeed />
+        </div>
+      </div>
     </div>
   )
 }

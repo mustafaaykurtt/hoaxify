@@ -1,0 +1,33 @@
+package com.hoaxify.ws.hoax;
+
+
+
+import java.awt.print.Pageable;
+import java.util.Date;
+
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
+
+@Service
+public class HoaxService {
+	
+	HoaxRepository hoaxRepository;
+
+	public HoaxService(HoaxRepository hoaxRepository) {
+		this.hoaxRepository = hoaxRepository;
+	}
+
+	public void save(Hoax hoax) {
+		hoax.setTimeStamp(new Date());
+		hoaxRepository.save(hoax);
+		
+	}
+
+	public Page<Hoax> getHoaxes(Pageable page) {
+		return hoaxRepository.findAll(page);
+		return null;
+	}
+	
+	
+	
+}
