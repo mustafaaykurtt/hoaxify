@@ -39,10 +39,10 @@ const HoaxFeed = () => {
             const response = await getNewHoaxCount(firstHoaxId, username);
             setNewHoaxCount(response.data.count);
         }
-        // let looper = setInterval(getCount, 3000);
-        // return function cleanUp() {
-        //     clearInterval(looper);
-        // }
+        let looper = setInterval(getCount, 5000);
+        return function cleanUp() {
+            clearInterval(looper);
+        }
     }, [firstHoaxId, username])
 
     useEffect(() => {
@@ -64,6 +64,13 @@ const HoaxFeed = () => {
             ...response.data,
             content: [...prevHoaxPage.content, ...response.data.content]
         }));
+    }
+
+    const onDeleteHoaxSuccess = id => {
+        setHoaxPage(previousHoaxPage => ({
+            ...previousHoaxPage,
+            content: previousHoaxPage.content.filter(hoax => hoax.id !== id)
+        }))
     }
 
     const loadNewHoaxes = async () => {
@@ -95,7 +102,7 @@ const HoaxFeed = () => {
 
                 </div>}
             {content.map((hoax, index) => {
-                return <HoaxView key={`${hoax.id}-${index}`} hoax={hoax} />
+                return <HoaxView key={`${hoax.id}-${index}`} hoax={hoax} onDeleteHoax={onDeleteHoaxSuccess} />
             })}
             {!last &&
                 <div

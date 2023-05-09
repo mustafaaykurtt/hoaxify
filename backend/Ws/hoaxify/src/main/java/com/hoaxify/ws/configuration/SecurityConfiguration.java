@@ -33,6 +33,8 @@ public class SecurityConfiguration {
 			.authenticated()									//authenticated olmak zorunda
 			.requestMatchers(HttpMethod.POST, "/api/1.0/hoaxes")
 			.authenticated()
+			.requestMatchers(HttpMethod.POST, "/api/1.0/hoax-attachments")
+			.authenticated()
 			.and()															
 		.authorizeHttpRequests()						// ardından bu requeslerden
 			.anyRequest()								//herhangi birini

@@ -26,7 +26,8 @@ i18n.use(initReactI18next).init({
                 'My Profile':'My Profile',
                 'There are no hoaxes':'There are no hoaxes',
                 'Load old hoxes':'Load all hoxes',
-                'There are new hoaxes':'There are new hoaxes'
+                'There are new hoaxes':'There are new hoaxes',
+                
 
             }
         },
