@@ -21,7 +21,6 @@ spring:
   servlet:
     multipart:
       file-size-threshold: 10MB
-        
   
 hoaxify:
   upload-path: picture-storage

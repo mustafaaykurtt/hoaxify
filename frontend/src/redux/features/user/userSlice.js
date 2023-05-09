@@ -52,6 +52,7 @@ export const userSlice = createSlice({
         },
         onLogoutSuccess: () => {
             clearLocalStorage();
+            setAuthorizationHeader(null, null, false);
             return { ...initialState }
         },
         updateSuccess: (state, {payload}) => {

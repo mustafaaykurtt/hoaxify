@@ -26,6 +26,7 @@ public class UserService {
 		this.fileService = fileService;
 	}
 
+
 	public void save(User user) {
 		user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
@@ -62,6 +63,11 @@ public class UserService {
 		return userRepository.save(inDB);
 	}
 
-	
+	public void deleteUser(String username) {
+		User inDB = userRepository.findByUsername(username);
+		fileService.deleteAllStoredFilesForUser(inDB);
+		userRepository.delete(inDB);
+	}
+
 
 }
