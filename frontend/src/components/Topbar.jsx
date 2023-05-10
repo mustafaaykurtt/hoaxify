@@ -2,7 +2,7 @@ import logo from '../assets/hoaxify.png'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { onLogoutSuccess } from '../redux/features/user/userSlice'
+import { logoutHandler, onLogoutSuccess } from '../redux/features/user/userSlice'
 import ProfileImageWithDefault from './ProfileImageWithDefault'
 import { useEffect, useRef, useState } from 'react'
 
@@ -25,6 +25,11 @@ const Topbar = () => {
         if (menuArea.current === null || !menuArea.current.contains(event.target)) {
             setMenuVisible(false);
         }
+    }
+
+    const logoutSuccess = () => {
+        dispatch(logoutHandler());
+        dispatch(onLogoutSuccess())
     }
 
     let links = () => {
@@ -68,7 +73,7 @@ const Topbar = () => {
                             </Link>
                             <span
                                 className='dropdown-item d-flex'
-                                style={{ cursor: 'pointer' }} onClick={() => dispatch(onLogoutSuccess())}>
+                                style={{ cursor: 'pointer' }} onClick={logoutSuccess}>
                                 <i className='material-icons text-danger' style={{
                                     marginRight
                                         : '5px'

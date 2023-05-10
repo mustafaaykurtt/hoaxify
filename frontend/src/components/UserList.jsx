@@ -14,15 +14,15 @@ const UserList = () => {
     number: 0
   });
   const { t } = useTranslation();
-  const { username, password, isLoggedIn } = useSelector(state => state.user);
+  const { isLoggedIn,token } = useSelector(state => state.user);
 
   const pendingApiCall = useApiProgress('get', '/api/1.0/users?page')
   const [loadFailure, setLoadFailure] = useState(false);
 
   useEffect(() => {
-    setAuthorizationHeader(username, password, isLoggedIn);
+    setAuthorizationHeader(isLoggedIn, token);
     loadUsers();
-  }, [username, password, isLoggedIn])
+  }, [isLoggedIn, token])
 
   const onClickNext = () => {
     const nextPage = page.number + 1;

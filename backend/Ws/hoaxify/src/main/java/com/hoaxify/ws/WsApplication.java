@@ -17,23 +17,23 @@ public class WsApplication {
 		SpringApplication.run(WsApplication.class, args);
 	}
 
-	@Bean // uygulama ayağa kalkarken bunu görüp run metodunu kullanıyor.CommandLine'ı tanıyor.	
+	@Bean // uygulama ayağa kalkarken bunu görüp run metodunu kullanıyor.CommandLine'ı
+			// tanıyor.
+	
 	CommandLineRunner createInitialUsers(UserService userService, HoaxService hoaxService) {
 		return (args) -> {
-			for(int i = 1; i<=25; i++) {
-				User user = new User();
-				user.setUsername("user" + i);
-				user.setDisplayName("display" + i);
-				user.setPassword("P4ssword");
-				userService.save(user);
-				for(int j = 1; j<=20;j++) {
-					HoaxSubmitVM hoax = new HoaxSubmitVM();
-					hoax.setContent("hoax - " + j + " from user " + i);
-					hoaxService.save(hoax, user);
-				}
+				for (int i = 1; i <= 25; i++) {
+					User user = new User();
+					user.setUsername("user" + i);
+					user.setDisplayName("display" + i);
+					user.setPassword("P4ssword");
+					userService.save(user);
+					for (int j = 1; j <= 20; j++) {
+						HoaxSubmitVM hoax = new HoaxSubmitVM();
+						hoax.setContent("hoax - " + j + " from user " + i);
+						hoaxService.save(hoax, user);
+					}
 			}
-			
-			
 		};
 	}
 

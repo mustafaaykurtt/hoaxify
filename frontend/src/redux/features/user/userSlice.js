@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { login, setAuthorizationHeader, signup } from "../../../api/apiCalls";
+import { login, logout, setAuthorizationHeader, signup } from "../../../api/apiCalls";
 import { clearLocalStorage, getLocalStorage, saveStateToLocalStorage } from "../../../utils/LocalStorage";
 
 const initialState = {
@@ -14,8 +14,8 @@ const initialState = {
 const hoax_auth = getLocalStorage();
 let stateFromLocalStorage = initialState;
 if (hoax_auth) {
-    const { username, password, isLoggedIn } = hoax_auth;
-    setAuthorizationHeader(username, password, isLoggedIn);
+    const { isLoggedIn, token } = hoax_auth;
+    setAuthorizationHeader( isLoggedIn, token);
     stateFromLocalStorage = hoax_auth
 }
 
@@ -23,8 +23,9 @@ export const loginHandler = createAsyncThunk('loginHandler', async (credentials,
     try {
         const response = await login(credentials);
         const authState = {
-            ...response.data,
-            password: credentials.password
+            ...response.data.user,
+            password:credentials.password,
+            token:response.data.token
         };
         return authState;
     } catch (err) {
@@ -32,6 +33,15 @@ export const loginHandler = createAsyncThunk('loginHandler', async (credentials,
     }
 }
 );
+
+
+export const logoutHandler = createAsyncThunk('logoutHandler', async () => {
+    try {
+        await logout();
+    } catch (err) {}
+}
+);
+
 
 export const signUpHandler = createAsyncThunk('signUpHandler', async (user, { rejectWithValue, dispatch }) => {
     try {
@@ -52,7 +62,7 @@ export const userSlice = createSlice({
         },
         onLogoutSuccess: () => {
             clearLocalStorage();
-            setAuthorizationHeader(null, null, false);
+            setAuthorizationHeader(false, null);
             return { ...initialState }
         },
         updateSuccess: (state, {payload}) => {
