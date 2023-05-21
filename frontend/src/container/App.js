@@ -21,7 +21,7 @@ const isLoggedIn = useSelector(state=>state.user.isLoggedIn);
           <Route path='*' element={<HomePage />} />
         </Routes>
       </BrowserRouter>
-      <LanguageSelector />
+      
     </div>
 
   );

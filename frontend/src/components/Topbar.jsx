@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logoutHandler, onLogoutSuccess } from '../redux/features/user/userSlice'
 import ProfileImageWithDefault from './ProfileImageWithDefault'
 import { useEffect, useRef, useState } from 'react'
+import LanguageSelector from './LanguageSelector'
 
 
 const Topbar = () => {
@@ -35,6 +36,7 @@ const Topbar = () => {
     let links = () => {
         return (
             <ul className='navbar-nav' style={{ marginLeft: 'auto' }}>
+                
                 <li>
                     <Link to="/login" className='nav-link'>
                         {t("Login")}
@@ -44,6 +46,9 @@ const Topbar = () => {
                     <Link to="/signup" className='nav-link'>
                         {t("Sign Up")}
                     </Link>
+                </li>
+                <li>
+                <LanguageSelector  />
                 </li>
             </ul>
         )
@@ -56,6 +61,8 @@ const Topbar = () => {
         links = () => {
             return (
                 <ul className='navbar-nav' style={{ marginLeft: 'auto' }} ref={menuArea}>
+                    
+
                     <li>
                         <div className='d-flex' style={{ cursor: 'pointer' }} onClick={() => setMenuVisible(true)}>
                             <ProfileImageWithDefault
@@ -82,6 +89,9 @@ const Topbar = () => {
                             </span>
                         </div>
                     </li>
+                    <li>
+                <LanguageSelector  />
+                </li>
                 </ul>
             )
         }

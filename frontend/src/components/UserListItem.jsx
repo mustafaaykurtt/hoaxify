@@ -5,11 +5,11 @@ import ProfileImageWithDefault from './ProfileImageWithDefault';
 const UserListItem = (props) => {
 
     const { user } = props
-    const {username, displayName, image} = user;
+    const { username, displayName, image } = user;
 
     return (
         <Link to={`/user/${username}`} className='list-group-item list-group-item-action'>
-            <ProfileImageWithDefault 
+            <ProfileImageWithDefault
                 className='rounded-circle'
                 width="32"
                 height="32"
@@ -18,6 +18,8 @@ const UserListItem = (props) => {
                 {displayName}@{username}
             </span>
         </Link>
+
+
     )
 }
 

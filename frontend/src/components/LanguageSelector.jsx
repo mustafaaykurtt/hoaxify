@@ -11,7 +11,7 @@ const LanguageSelector = () => {
     };
 
     return (
-        <div className='container'>
+        <div className='container m-2'>
             <img src="https://flagsapi.com/TR/flat/24.png" alt='Turkish Flag' onClick={() => onChangeLanguage('tr')} style={{ cursor: 'pointer' }} />
             <img src="https://flagsapi.com/US/flat/24.png" alt='USA Flag' onClick={() => onChangeLanguage('en')} style={{ cursor: 'pointer' }} />
         </div>

@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import com.hoaxify.ws.hoax.HoaxService;
 import com.hoaxify.ws.hoax.vm.HoaxSubmitVM;
@@ -19,7 +20,7 @@ public class WsApplication {
 
 	@Bean // uygulama ayağa kalkarken bunu görüp run metodunu kullanıyor.CommandLine'ı
 			// tanıyor.
-	
+	@Profile("dev")
 	CommandLineRunner createInitialUsers(UserService userService, HoaxService hoaxService) {
 		return (args) -> {
 				for (int i = 1; i <= 25; i++) {
@@ -36,5 +37,4 @@ public class WsApplication {
 			}
 		};
 	}
-
 }
