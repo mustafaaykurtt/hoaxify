@@ -1,4 +1,4 @@
-# hoaxify
+# Hoaxify
 Social Media App
 
 For the promotional video; 
