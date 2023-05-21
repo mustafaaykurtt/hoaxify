@@ -17,9 +17,6 @@ import org.springframework.web.context.request.WebRequest;
 @RestController
 public class ErrorHandler implements ErrorController {
 
-	// bu sınfı yazma amacımız securitye gelen errorleri handle etmek. Normalde
-	// hepsi basicse düşüyor o kafasına göre mesaj yolluyor biz burda custom ettik.
-
 	@Autowired
 	private ErrorAttributes errorAttributes;
 

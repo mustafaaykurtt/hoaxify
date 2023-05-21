@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor // argüman alan bir constructor yaratmak için kullandık
+@AllArgsConstructor 
 public class GenericResponse {
 	
 	private String message;

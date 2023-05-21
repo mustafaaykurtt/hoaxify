@@ -32,8 +32,8 @@ public class FileTypeValidator implements ConstraintValidator<FileType, String> 
 			}
 		}
 		
-		String supportedTypes = Arrays.stream(this.types).collect(Collectors.joining(", "));// kullanıcıda hatalı mesajı virgüllü şekilde verelim diye. 
-		context.disableDefaultConstraintViolation();//default oluşan mesajı engelleme çağrısı
+		String supportedTypes = Arrays.stream(this.types).collect(Collectors.joining(", ")); 
+		context.disableDefaultConstraintViolation();
 		HibernateConstraintValidatorContext hibernateConstraintValidatorContext = context.unwrap(HibernateConstraintValidatorContext.class);
 		hibernateConstraintValidatorContext.addMessageParameter("types", supportedTypes);
 		hibernateConstraintValidatorContext.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate()).addConstraintViolation();

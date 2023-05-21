@@ -10,7 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 @Target({ ElementType.PARAMETER })
 @Retention(RUNTIME)
-@AuthenticationPrincipal           //Bize doğrudan .getAuthentication().getPrincipal(); işlemini yapıp user'a atayacak o anda hangi user varsa
+@AuthenticationPrincipal           
 
 public @interface CurrentUser {
 

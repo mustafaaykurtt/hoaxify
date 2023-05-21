@@ -92,7 +92,6 @@ public class HoaxService {
 	
 	
 	
-	//1.parametre neye bakacağız tabloda 2.si benim verdiğim.kıyaslamak için tablodaki id değeri benim verrdiğim id den küçük mü?
 	Specification<Hoax> idLessThan(long id) {
 		return (root, query, criteriaBuilder) -> {
 				return criteriaBuilder.lessThan(root.get("id"), id); 

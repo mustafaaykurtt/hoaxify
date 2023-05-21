@@ -23,29 +23,29 @@ public class SecurityConfiguration {
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	  
     http.csrf().disable();
-    http.exceptionHandling().authenticationEntryPoint(new AuthEntryPoint()); 	//pop-up 'ı engelledik.;
+    http.exceptionHandling().authenticationEntryPoint(new AuthEntryPoint()); 	
 	
     http.headers().frameOptions().disable();
     
     http.
     	authorizeHttpRequests()
-			.requestMatchers(HttpMethod.PUT, "/api/1.0/users/{username}").authenticated() //authenticated olmak zorunda
+			.requestMatchers(HttpMethod.PUT, "/api/1.0/users/{username}").authenticated() 
 			.requestMatchers(HttpMethod.POST, "/api/1.0/hoaxes").authenticated()
 			.requestMatchers(HttpMethod.POST, "/api/1.0/hoax-attachments").authenticated()
 			.requestMatchers(HttpMethod.POST, "/api/1.0/logout").authenticated()
 			.and()															
-		.authorizeHttpRequests()						// ardından bu requeslerden
-			.anyRequest()								//herhangi birini
-			.permitAll();								//umursama
+		.authorizeHttpRequests()						
+			.anyRequest()								
+			.permitAll();								
  
-    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);//session üretimini security için yapmıyor artık ve ben bir daha girdiğimde otomatik login yapmıyor 
+    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); 
     
     http.addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
     return http.build();
   }
  
   @Bean
-  public PasswordEncoder passwordEncoder() {	// bunu yapmamızın db deki hashli codu decode etmek.
+  public PasswordEncoder passwordEncoder() {	
     return new BCryptPasswordEncoder();
   }
   

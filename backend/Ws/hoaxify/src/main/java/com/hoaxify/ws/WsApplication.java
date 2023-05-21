@@ -18,8 +18,7 @@ public class WsApplication {
 		SpringApplication.run(WsApplication.class, args);
 	}
 
-	@Bean // uygulama ayağa kalkarken bunu görüp run metodunu kullanıyor.CommandLine'ı
-			// tanıyor.
+	@Bean 
 	@Profile("dev")
 	CommandLineRunner createInitialUsers(UserService userService, HoaxService hoaxService) {
 		return (args) -> {
