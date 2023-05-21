@@ -11,8 +11,8 @@ I used layered architecture in my project. These layers;
 * Entitiy Layer
 * Data access Layer
 
-#Technologies
-#Backend;
+<H5>Technologies</H5>
+<b>Backend;</b>
 Java Core
 Spring Boot
 Spring Security
@@ -27,7 +27,7 @@ Spring Developer Tools
 H2-Database Engine
 Rest API
 
-#Frontend;
+<b>Frontend</b>;
 React Js
 React Router
 Axios
@@ -44,7 +44,7 @@ Postman
 React DevTools
 Redux DevTools
 
-Gains 
+<b>Gains</b> 
 - Using the annotation mechanism provided by Spring Framework, we created annotation classes to perform operations specific to our needs (@UniqueUsername, @CurrentUser etc.)
 - In case of errors, dynamic messages were generated using a common Error class.
 - Http methods such as Post, Get, Put, Delete were used.
